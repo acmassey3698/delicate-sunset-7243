@@ -31,7 +31,7 @@ RSpec.describe 'airlines show page' do
     PassengerFlight.create!(passenger: @passenger7, flight: @flight2)
     PassengerFlight.create!(passenger: @passenger8, flight: @flight4)
 
-    #this passenger is on two flights for @airline1
+    #creating more passenger flights for the frequent flyers
     PassengerFlight.create!(passenger: @passenger1, flight: @flight2)
     PassengerFlight.create!(passenger: @passenger1, flight: @flight5)
     PassengerFlight.create!(passenger: @passenger1, flight: @flight6)

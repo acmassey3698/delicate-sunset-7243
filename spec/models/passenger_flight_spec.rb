@@ -34,7 +34,6 @@ RSpec.describe PassengerFlight, type: :model do
     @pf8 = PassengerFlight.create!(passenger: @passenger8, flight: @flight4)
   end
 
-
   describe 'class methods' do
     it '#find_by_ids' do
       expect(PassengerFlight.find_by_ids(@passenger2, @flight1)).to eq(@pf2)

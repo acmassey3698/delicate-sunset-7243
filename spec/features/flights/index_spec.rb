@@ -91,6 +91,5 @@ RSpec.describe 'flights index' do
       click_button("Remove #{@passenger1.name}")
       expect(page).to_not have_content(@passenger1.name)
     end
-
   end
 end
