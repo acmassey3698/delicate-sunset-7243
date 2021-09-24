@@ -1,4 +1,4 @@
-class PassengersController < ApplicationController
+class PassengerFlightsController < ApplicationController
   def destroy
     passenger = Passenger.find(params[:id])
     flight = Flight.find(params[:flight_id])
