@@ -28,6 +28,54 @@ RSpec.describe 'flights index' do
     PassengerFlight.create!(passenger: @passenger7, flight: @flight4)
     PassengerFlight.create!(passenger: @passenger8, flight: @flight4)
 
-    visit 'flights_path'
+    visit flights_path
+  end
+
+  it 'shows all flight numbers and the name of the airline' do
+    within "#flight-#{@flight1.id}" do
+      expect(page).to have_content(@flight1.number)
+      expect(page).to have_content(@flight1.airline.name)
+    end
+
+    within "#flight-#{@flight2.id}" do
+      expect(page).to have_content(@flight2.number)
+      expect(page).to have_content(@flight2.airline.name)
+    end
+
+    within "#flight-#{@flight3.id}" do
+      expect(page).to have_content(@flight3.number)
+      expect(page).to have_content(@flight3.airline.name)
+    end
+
+    within "#flight-#{@flight4.id}" do
+      expect(page).to have_content(@flight4.number)
+      expect(page).to have_content(@flight4.airline.name)
+    end
+  end
+
+  it 'shows the names of all the flights passengers' do
+    within "#flight-#{@flight1.id}" do
+      expect(page).to have_content(@passenger1.name)
+      expect(page).to have_content(@passenger2.name)
+      expect(page).to_not have_content(@passenger3.name)
+    end
+
+    within "#flight-#{@flight2.id}" do
+      expect(page).to have_content(@passenger3.name)
+      expect(page).to have_content(@passenger4.name)
+      expect(page).to_not have_content(@passenger1.name)
+    end
+
+    within "#flight-#{@flight3.id}" do
+      expect(page).to have_content(@passenger5.name)
+      expect(page).to have_content(@passenger6.name)
+      expect(page).to_not have_content(@passenger3.name)
+    end
+
+    within "#flight-#{@flight4.id}" do
+      expect(page).to have_content(@passenger7.name)
+      expect(page).to have_content(@passenger8.name)
+      expect(page).to_not have_content(@passenger5.name)
+    end
   end
 end
